@@ -9,7 +9,7 @@ $textoMinusculas=strtolower($texto);
 'unas','aquel','aquellos','aquella','aquellas'];
     
    
-    $listaPalabras= preg_split("/[\s,_\-;:]+/", $texto);
+    $listaPalabras= preg_split("/[\s,_\-;:]+/", $textoMinusculas);
     //Divido el texto introducido por el usuario usando una expresion regular para separar el texto 
     // por comas espacios, guiones y ; o :
 
