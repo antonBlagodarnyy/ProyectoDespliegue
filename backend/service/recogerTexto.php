@@ -2,7 +2,7 @@
 
 function recogerTexto($texto):array{
 
-$textoMinusculas=strtolower($texto);
+$textoMinusculas=trim(strtolower($texto));
 
     $determinantes=['mi','mis','la','las','lo','los','el','ellos','ella','ellas','ellos'
 ,'ese','esa','esas','eso','esos','este','esto','estos','esta','estas','uno','unos','una',
@@ -27,11 +27,12 @@ $textoMinusculas=strtolower($texto);
     }
    }
 
-    //print_r($listaPalabras);
+   // print_r($listaPalabras);
 
    return $listaPalabras;
 
 }
+
 
 
 
