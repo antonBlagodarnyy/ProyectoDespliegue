@@ -5,7 +5,7 @@ require_once(__DIR__.'/../backend/service/funciones.php');
 <?php
     if($_SERVER['REQUEST_METHOD' == "POST"]){
         //TODO implementar la funcion en el backend
-        //recogerTexto($_POST['texto']);
+        recogerTexto($_POST['texto']);
     }
     ?>
 <!DOCTYPE html>
