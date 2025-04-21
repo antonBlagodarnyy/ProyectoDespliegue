@@ -8,7 +8,6 @@ $palabras = [];
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($_POST['palabras']) && preg_match('/^[^\s]+(\s+[^\s]+)*$/',$_POST['palabras'])) {
         $palabras = ordenarPalabras(contarPalabras(recogerTexto($_POST['palabras'])));
-        var_dump($palabras);
     }
 }
 ?>
