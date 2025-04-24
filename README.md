@@ -27,16 +27,16 @@ Este proyecto ha sido desarrollado en colaboración por:
 ---
 
 ## 📁 Estructura de carpetas
-ProyectoDespliegue/
-├── backend/                     <!-- # Lógica del servidor -->
-│   └── service/                <!--  # Servicios PHP que procesan el texto -->
-│       ├── contarPalabras.php    <!--   # Cuenta las palabras relevantes -->
-│       ├── funciones.php          <!--  # Funciones auxiliares (normalizar texto, eliminar stopwords, etc.) -->
-│       ├── ordenarPalabras.php     <!-- # Ordena las palabras por frecuencia -->
-│       └── recogerTexto.php        <!-- # Recoge y prepara el texto enviado desde frontend -->
-├── frontend/                    <!-- # Interfaz de usuario -->
-│   └── index.php              <!--  # Página principal con el formulario de entrada de texto -->
-├── README.md                  <!--  # Documentación del proyecto -->
+
+- `backend/` – Lógica del servidor
+  - `service/` – Servicios PHP que procesan el texto
+    - `contarPalabras.php` – Cuenta las palabras relevantes
+    - `funciones.php` – Funciones auxiliares (normalizar texto, eliminar stopwords, etc.)
+    - `ordenarPalabras.php` – Ordena las palabras por frecuencia
+    - `recogerTexto.php` – Recoge y prepara el texto enviado desde frontend
+- `frontend/` – Interfaz de usuario
+  - `index.php` – Página principal con el formulario de entrada de texto
+- `README.md` – Documentación del proyecto
 
 
 
