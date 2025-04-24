@@ -10,7 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $palabras = ordenarPalabras(contarPalabras(recogerTexto($_POST['palabras'])));
     }
 }
-?>
+    
+    ?>
+    
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,23 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de despliegue</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        textarea {
-            width: 50vh;
-            height: 50vh;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
