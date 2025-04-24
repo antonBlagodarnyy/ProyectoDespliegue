@@ -15,21 +15,7 @@ require_once(__DIR__.'/../backend/service/funciones.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de despliegue</title>
-    <style>
-        body{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        textarea{
-            width: 50vh;
-            height: 50vh;
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+  
 </head>
 
 <body>
