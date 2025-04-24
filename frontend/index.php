@@ -7,7 +7,10 @@ require_once(__DIR__.'/../backend/service/funciones.php');
         //TODO implementar la funcion en el backend
         recogerTexto($_POST['texto']);
     }
+    
     ?>
+    <link rel="stylesheet" href="style.css">
+
 <!DOCTYPE html>
 <html lang="en">
 
