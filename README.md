@@ -36,6 +36,7 @@ Este proyecto ha sido desarrollado en colaboración por:
     - `recogerTexto.php` – Recoge y prepara el texto enviado desde frontend
 - `frontend/` – Interfaz de usuario
   - `index.php` – Página principal con el formulario de entrada de texto
+  - `style.css` - Estilos CSS para la apariencia de la página
 - `README.md` – Documentación del proyecto
 
 
