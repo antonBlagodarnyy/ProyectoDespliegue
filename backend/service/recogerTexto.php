@@ -75,6 +75,8 @@ $textoMinusculas=trim(strtolower($texto));
     }
    }
 
+   $listaPalabras=array_filter($listaPalabras);
+
    // print_r($listaPalabras);
 
    return $listaPalabras;
