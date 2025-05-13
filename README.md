@@ -39,6 +39,28 @@ Este proyecto ha sido desarrollado en colaboración por:
   - `style.css` - Estilos CSS para la apariencia de la página
 - `README.md` – Documentación del proyecto
 
+---
 
+## ⚙️ Cómo desplegar la app en local
+
+Para probar esta aplicación en un entorno local, sigue estos pasos:
+
+1. **Clona el repositorio** en tu equipo:
+   ```bash
+   git clone https://github.com/antonBlagodarnyy/ProyectoDespliegue.git
+   
+   ```
+
+2. **Copia la carpeta del proyecto** en el directorio raíz de tu servidor local (XAMPP):
+   - En Windows: `C:\xampp\htdocs\ProyectoDespliegue`
+   - En macOS/Linux (con XAMPP o similar): `/opt/lampp/htdocs/ProyectoDespliegue`
+
+3. **Inicia el servidor Apache** desde el panel de control de XAMPP.
+
+4. **Accede a la aplicación desde tu navegador**:
+   ```
+   http://localhost/ProyectoDespliegue/frontend/index.php
+
+   ```
 
 
