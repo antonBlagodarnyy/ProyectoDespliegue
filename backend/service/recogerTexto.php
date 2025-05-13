@@ -57,7 +57,7 @@ $textoMinusculas=trim(strtolower($texto));
       ];
     
    
-    $listaPalabras= preg_split("/[\s,._\-;:¿?!¡+@#%&()]+/", $textoMinusculas);
+    $listaPalabras= preg_split("/[\s,._\-;:¿?!¡+@#%&()\d]+/", $textoMinusculas);
     //Divido el texto introducido por el usuario usando una expresion regular para separar el texto 
     // por comas espacios, guiones y ; o :
 
