@@ -2,7 +2,9 @@
 
 function recogerTexto($texto):array{
 
-$textoMinusculas=trim(mb_strtolower($texto,'UTF-8'));
+$textoConvertido=mb_convert_encoding($texto,'unicode');
+
+$textoMinusculas=trim(strtolower($texto));
 
     $determinantes=[
         "a", "acá", "ahí", "al", "algo", "algunas", "algunos", "allá", "allí", "ambos",
