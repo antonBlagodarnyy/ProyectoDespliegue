@@ -2,9 +2,15 @@
 
 function recogerTexto($texto):array{
 
-$textoConvertido=mb_convert_encoding($texto,'unicode');
 
-$textoMinusculas=trim(strtolower($textoConvertido));
+
+$textoConvertido=mb_convert_encoding($texto,'UTF-8','auto');
+
+//var_dump($texto);
+
+$textoMinusculas=trim(mb_strtolower($textoConvertido, 'UTF-8'));
+
+//var_dump($textoMinusculas);
 
     $determinantes=[
         "a", "acá", "ahí", "al", "algo", "algunas", "algunos", "allá", "allí", "ambos",
@@ -58,18 +64,21 @@ $textoMinusculas=trim(strtolower($textoConvertido));
         "y", "ya", "yo"
       ];
     
+    
    
-    $listaPalabras= preg_split("/[\s,._\-;:¿?!¡+@#%&()\d]+/", $textoMinusculas);
+    $listaPalabras= preg_split("/[\s,._\-;:¿?!¡+@#%&()\d]+/u", $textoMinusculas,-1, PREG_SPLIT_NO_EMPTY);
     //Divido el texto introducido por el usuario usando una expresion regular para separar el texto 
-    // por comas espacios, guiones y ; o :
+    // por comas espacios, guiones y ; o : . Gracias a la u final de la regex, consigo tratar los caracteres
+    //con tilde como á,é,í,ó,ú como caracteres completos y no caracteres separados, por ejemplo a ´.
 
     
-   // print_r($listaPalabras);
+    //echo '<br>despues de la regex <br>';
+    //var_dump($listaPalabras);
 
    foreach ($listaPalabras as $indice => $palabra) {//Recorro todas las palabras del array
-
+        
     foreach ($determinantes as $determinante) {//Recorro el array determinantes
-
+       
         if($palabra == $determinante){//Si la palabra actual del array coincide con algun determinante...
 
             unset($listaPalabras[$indice]);//Borro esa palabra de la lista de palabras

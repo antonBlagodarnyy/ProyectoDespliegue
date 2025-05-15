@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $palabras = ordenarPalabras(contarPalabras(recogerTexto($_POST['palabras'])));
     }
 }
-    
+    //'/^\p{L}+( \p{L}+)*$/u', regex antigua: /^[^\s]+(\s+[^\s]+)*$/
     ?>
     
 
@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
     <div class="container">
         <form method="POST">
-            <textarea name="palabras" id="palabras" name="texto" pattern="[A-Za-z0-9]+"></textarea>
+            <textarea name="palabras" id="palabras" pattern=" [A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"></textarea>
+            <!--Pattern antiguo:[A-Za-z0-9]+ , nuevo:  [A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+-->
             <button type="submit">Contar palabras</button>
         </form>
     </div>
