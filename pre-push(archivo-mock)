@@ -4,7 +4,7 @@
 // Ejecutar los tests, asumiendo que usas PHPUnit
 echo "Ejecutando pruebas...\n";
 
-$cmd = './vendor/bin/phpunit tests';
+$cmd = __DIR__ .'/../../vendor/bin/phpunit';
 
 exec($cmd, $output, $exitCode);
 
