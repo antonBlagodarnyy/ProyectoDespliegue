@@ -1,0 +1,12 @@
+{
+    "name": "despliegue/proyecto",
+    "type": "project",
+    "authors": [
+        {
+            "name": "despliegue"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
