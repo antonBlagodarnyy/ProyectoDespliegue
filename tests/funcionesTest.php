@@ -17,7 +17,7 @@ class FuncionesTest extends TestCase
         $this->assertContains('gata', $resultado);
         $this->assertContains('mira', $resultado);
 
-        $this->assertContains('Camión', $resultado);
+        $this->assertContains('camión', $resultado);
         $this->assertContains('árbol', $resultado);
         
         $this->assertContains('recorrió', $resultado);
