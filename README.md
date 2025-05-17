@@ -53,7 +53,7 @@ La rama `testing` está dedicada a **las pruebas automáticas del proyecto**. In
 - `.gitignore`– Archivos y carpetas excluidos del control de versiones  
 - `composer.json` y `composer.lock` – Dependencias PHP (incluyendo PHPUnit)  
 - `phpUnit.xml` – Configuración de PHPUnit 
--`.git/hooks/pre-push` – Hook que evita hacer push si fallan los tests
+- `.git/hooks/pre-push` – Hook que evita hacer push si fallan los tests
 
 ---
 
