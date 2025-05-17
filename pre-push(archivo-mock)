@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+// Ejecutar los tests, asumiendo que usas PHPUnit
+echo "Ejecutando pruebas...\n";
+
+$cmd = __DIR__ .'/../../vendor/bin/phpunit';
+
+exec($cmd, $output, $exitCode);
+
+echo implode("\n", $output) . "\n";
+
+if ($exitCode !== 0) {
+    echo "\n❌ Push bloqueado: hay errores en las pruebas.\n";
+    exit(1);
+}
+
+echo "\n✅ Todas las pruebas pasaron. Se permite el push.\n";
+exit(0);
