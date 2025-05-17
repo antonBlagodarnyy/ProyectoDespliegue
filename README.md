@@ -28,15 +28,15 @@ Este proyecto ha sido desarrollado en colaboración por:
 
 ## 📁 Estructura de carpetas
 
-- `index.php` – Página principal con el formulario de entrada de texto
 - `backend/` – Lógica del servidor
   - `service/` – Servicios PHP que procesan el texto
     - `contarPalabras.php` – Cuenta las palabras relevantes
     - `funciones.php` – Funciones auxiliares (normalizar texto, eliminar stopwords, etc.)
     - `ordenarPalabras.php` – Ordena las palabras por frecuencia
     - `recogerTexto.php` – Recoge y prepara el texto enviado desde frontend
-- `assets/` – Archivos estáticos para el diseño e interfaz de usuario
-   - `style.css` - Estilos CSS para la apariencia de la página
+- `frontend/` – Interfaz de usuario
+  - `index.php` – Página principal con el formulario de entrada de texto
+  - `style.css` - Estilos CSS para la apariencia de la página
 - `README.md` – Documentación del proyecto
 
 ---
