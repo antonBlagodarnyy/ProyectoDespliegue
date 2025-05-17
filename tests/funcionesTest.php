@@ -8,27 +8,44 @@ class FuncionesTest extends TestCase
 {
     public function testRecogerTextoEliminaDeterminantes()
     {
-        $texto = "El perro corre por el parque y la Camión gata lo mira.  árbol esta está recorrió";
+        $texto = "El perro corre por el parque y la dueña ve un ¿Camión con una gata que la mira?.  árbol esta está recorrió la gata
+        y la gata se quedo en la copa #";//La cadena que entraria desde el formulario en el frontend
         $resultado = recogerTexto($texto);
 
+        //Los resultados que se espera que devuelva la funcion dentro del array palabras
         $this->assertContains('perro', $resultado);
         $this->assertContains('corre', $resultado);
         $this->assertContains('parque', $resultado);
+        $this->assertContains('dueña', $resultado);
         $this->assertContains('gata', $resultado);
         $this->assertContains('mira', $resultado);
+        
 
-        $this->assertContains('camión', $resultado);
+        $this->assertContains('camión', $resultado);//Las letras en mayuscula en el texto, se convierten
+        //a minuscula cuando pasan por la funcion, por eso aqui espero que camion se pase a minuscula
+        //cuando la funcion devuelva el resultado
         $this->assertContains('árbol', $resultado);
         
         $this->assertContains('recorrió', $resultado);
 
+        //Los resultados que se espera que la funcion excluya, ya sean porque son palabras determinantes
+        // o porque son caracteres especiales
+
         $this->assertNotContains('el', $resultado);
+         $this->assertNotContains('?', $resultado);
+          $this->assertNotContains('¿', $resultado);
         $this->assertNotContains('la', $resultado);
-        $this->assertNotContains('lo', $resultado);
+         $this->assertNotContains('una', $resultado);
+         $this->assertNotContains('un', $resultado);
+         $this->assertNotContains('en', $resultado);
+         $this->assertNotContains('se', $resultado);
+          $this->assertNotContains('con', $resultado);
+       // $this->assertNotContains('lo', $resultado);
         $this->assertNotContains('y', $resultado);
 
         $this->assertNotContains('está', $resultado);
         $this->assertNotContains('esta', $resultado);
+        $this->assertNotContains('#', $resultado);
     }
 
     public function testContarPalabrasCuentaCorrectamente()
