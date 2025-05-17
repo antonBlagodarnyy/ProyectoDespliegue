@@ -27,7 +27,6 @@ Este proyecto ha sido desarrollado en colaboración por:
 ---
 
 ## 📁 Estructura de carpetas
-
 - `index.php` – Página principal con el formulario de entrada de texto
 - `backend/` – Lógica del servidor
   - `service/` – Servicios PHP que procesan el texto
