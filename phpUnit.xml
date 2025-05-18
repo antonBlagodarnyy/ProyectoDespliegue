@@ -7,19 +7,25 @@
 
     <testsuites>
         <testsuite name="Proyecto Tests">
-            <directory suffix="Test.php">tests</directory>
+            <directory suffix="Test.php">tests</directory><!--Ejecuto solamente aquellos archivos
+            llamados o terminados en test.php, (en este caso solo hay uno) dentro del directorio tests,
+            dicho archivo es quien contiene los test de phpunit para comprobar el buen funcionamiento
+            de la aplicacion-->
         </testsuite>
     </testsuites>
 
     <source>
         <include>
-            <directory suffix=".php">backend/service</directory>
+            <directory suffix=".php">backend/service</directory><!--Indico que quiero
+            analizar los archivos con extension .php dentro de la carpeta backend/services para
+            el analisis de coverage-->
         </include>
     </source>
 
     <coverage>
         <report>
             <text outputFile="php://stdout"/>
+            <!--Con esto muestro el analisis y nivel de coverage en la consola-->
         </report>
     </coverage>
 
