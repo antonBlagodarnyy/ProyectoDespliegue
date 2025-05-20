@@ -1,2 +1,6 @@
 /vendor/
+<<<<<<< HEAD
 .phpunit.result.cache
+=======
+.php.result.cache
+>>>>>>> develop
