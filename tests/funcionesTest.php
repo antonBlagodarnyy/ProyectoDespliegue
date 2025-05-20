@@ -62,6 +62,23 @@ class FuncionesTest extends TestCase
         $this->assertEmpty($resultado);
     }
 
+     public function testRecogerTextoConTildes()
+    {
+        $texto = "camión árbol acción";
+        $resultado = recogerTexto($texto);
+        $this->assertContains('camión', $resultado);
+        $this->assertContains('árbol', $resultado);
+        $this->assertContains('acción', $resultado);
+    }
+
+    public function testRecogerTextoMayusculasMinusculas()
+    {
+        $texto = "PERRO gato GATO";
+        $resultado = recogerTexto($texto);
+        $this->assertContains('perro', $resultado);
+        $this->assertContains('gato', $resultado);
+    }
+
     public function testContarPalabrasCuentaCorrectamente()
     {
         $palabras = ['perro', 'gata', 'perro', 'mira'];
@@ -71,6 +88,14 @@ class FuncionesTest extends TestCase
         $this->assertEquals(1, $resultado['gata']);
         $this->assertEquals(1, $resultado['mira']);
     }
+
+     public function testContarPalabrasVacio()
+    {
+        $resultado = contarPalabras([]);
+        $this->assertIsArray($resultado);
+        $this->assertEmpty($resultado);
+    }
+
 
     public function testOrdenarPalabrasOrdenaDescendente()
     {
