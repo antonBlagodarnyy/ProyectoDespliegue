@@ -48,6 +48,20 @@ class FuncionesTest extends TestCase
         $this->assertNotContains('#', $resultado);
     }
 
+     public function testRecogerTextoConTextoVacio()
+    {
+        $resultado = recogerTexto("");
+        $this->assertIsArray($resultado);
+        $this->assertEmpty($resultado);
+    }
+
+     public function testRecogerTextoSoloCaracteresEspeciales()
+    {
+        $texto = "#$%&?¿!¡";
+        $resultado = recogerTexto($texto);
+        $this->assertEmpty($resultado);
+    }
+
     public function testContarPalabrasCuentaCorrectamente()
     {
         $palabras = ['perro', 'gata', 'perro', 'mira'];
