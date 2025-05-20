@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         executionOrder="depends">
+
+    <testsuites>
+        <testsuite name="Proyecto Tests">
+            <directory suffix="Test.php">tests</directory><!--Ejecuto solamente aquellos archivos
+            llamados o terminados en test.php, (en este caso solo hay uno) dentro del directorio tests,
+            dicho archivo es quien contiene los test de phpunit para comprobar el buen funcionamiento
+            de la aplicacion-->
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">backend/service</directory><!--Indico que quiero
+            analizar los archivos con extension .php dentro de la carpeta backend/services para
+            el analisis de coverage-->
+        </include>
+    </source>
+
+    <coverage>
+        <report>
+            <text outputFile="php://stdout"/>
+            <!--Con esto muestro el analisis y nivel de coverage en la consola-->
+        </report>
+    </coverage>
+
+</phpunit>
