@@ -96,6 +96,15 @@ class FuncionesTest extends TestCase
         $this->assertEmpty($resultado);
     }
 
+    public function testContarPalabrasRepetidasDesorden()
+    {
+        $palabras = ['gato', 'perro', 'gato', 'gato'];
+        $resultado = contarPalabras($palabras);
+
+        $this->assertEquals(3, $resultado['gato']);
+        $this->assertEquals(1, $resultado['perro']);
+    }
+
 
     public function testOrdenarPalabrasOrdenaDescendente()
     {
@@ -114,5 +123,29 @@ class FuncionesTest extends TestCase
         ];
 
         $this->assertEquals($esperado, $ordenado);
+    }
+
+    public function testOrdenarPalabrasVacio()
+    {
+        $resultado = ordenarPalabras([]);
+        $this->assertIsArray($resultado);
+        $this->assertEmpty($resultado);
+    }
+
+    public function testOrdenarPalabrasConFrecuenciasIguales()
+    {
+        $palabrasContadas = [
+            'gato' => 2,
+            'perro' => 2,
+            'loro' => 2
+        ];
+
+        $resultado = ordenarPalabras($palabrasContadas);
+
+        $this->assertEqualsCanonicalizing([
+            'gato' => 2,
+            'perro' => 2,
+            'loro' => 2
+        ], $resultado);
     }
 }
