@@ -1,21 +1,21 @@
 <?php
-require_once __DIR__ . '/stop_words.php';
+require_once __DIR__ . '/../backend/service/stop_words.php';
 
-class ProcesadorTexto
+class ProcesadorTextoMock
 {
 
 
-    static function main($texto): array
+     function main($texto): array
     {
-        $textoSaneado = ProcesadorTexto::sanearTexto($texto);
-        $listaPalabras = ProcesadorTexto::eliminarDeterminantes(ProcesadorTexto::filtrarPalabras($textoSaneado));
-        $palabrasContadas = ProcesadorTexto::contarPalabras($listaPalabras);
-        $palabrasOrdenadas = ProcesadorTexto::ordenarPalabras($palabrasContadas);
+        $textoSaneado = $this->sanearTexto($texto);
+        $listaPalabras = $this->eliminarDeterminantes($this->filtrarPalabras($textoSaneado));
+        $palabrasContadas = $this->contarPalabras($listaPalabras);
+        $palabrasOrdenadas = $this->ordenarPalabras($palabrasContadas);
 
         return $palabrasOrdenadas;
     }
 
-    static function sanearTexto($texto): string
+     function sanearTexto($texto): string
     {
 
         $textoConvertido = mb_convert_encoding($texto, 'UTF-8', 'auto');
@@ -27,7 +27,7 @@ class ProcesadorTexto
         return $textoMinusculas;
     }
 
-    static function filtrarPalabras($texto): array
+     function filtrarPalabras($texto): array
     {
         $listaPalabras = preg_split("/[\s,._\-;:¿?!¡+@$#%&()\d]+/u", $texto, -1, PREG_SPLIT_NO_EMPTY);
         //Divido el texto introducido por el usuario usando una expresion regular para separar el texto 
@@ -37,7 +37,7 @@ class ProcesadorTexto
         return $listaPalabras;
     }
 
-    static function eliminarDeterminantes($listaPalabras): array
+     function eliminarDeterminantes($listaPalabras): array
     {
 
         foreach ($listaPalabras as $indice => $palabra) { //Recorro todas las palabras del array
@@ -58,7 +58,7 @@ class ProcesadorTexto
         return $listaPalabras;
     }
 
-    static function ordenarPalabras(array $palabras)
+     function ordenarPalabras(array $palabras)
     {
         //Podria utilizar sort()
 
@@ -88,7 +88,7 @@ class ProcesadorTexto
         return $ordenado;
     }
 
-    static  function contarPalabras(array $palabras)
+      function contarPalabras(array $palabras)
     {
         //Podria usar array_count_values()
         $palabrasContadas = [];
