@@ -31,29 +31,18 @@ Este proyecto ha sido desarrollado en colaboración por:
 - `backend/` – Lógica del servidor
   - `service/` – Servicios PHP que procesan el texto
     - `funciones.php` – Contiene toda la lógica: recoger, limpiar, contar y ordenar
+    - `stop_words.php`- Lista de palabras vacías (STOP_WORDS)
 - `assets/` – Archivos estáticos para el diseño e interfaz de usuario
    - `style.css` - Estilos CSS para la apariencia de la página
+- `test`– Carpeta con pruebas automatizadas 
+  - `funcionesTest.php` – Pruebas unitarias para funciones principales 
+  - `funcionesMock.php` - Mock para pruebas o simulaciones
+- `composer.json` - Configuración de dependencias 
+- `composer.lock`- versión bloqueada de dependencias
+- `phpunit.xml`- Configuración de PHPUnit 
+- `.gitignore`- Archivos ignorados por Git
+- `.git/hooks/pre-push` - Hook para evitar push si fallan los tests
 - `README.md` – Documentación del proyecto
-
----
-## 🧪 Rama `testing`
-
-### 📁 Estructura específica en `testing`
-La rama `testing` está dedicada a **las pruebas automáticas del proyecto**. Incluye herramientas de testing, archivos de configuración y un *hook* de Git para asegurar la calidad del código antes de hacer push. Esta rama se utiliza para garantizar que las funcionalidades principales funcionan correctamente antes de fusionarlas con la rama principal.
-
-- `index.php` – Página principal con el formulario de entrada de texto
-- `backend/` – Lógica del servidor
-  - `service/` – Servicios PHP que procesan el texto
-    - `funciones.php` – Contiene toda la lógica: recoger, limpiar, contar y ordenar
-- `assets/` – Archivos estáticos para el diseño e interfaz de usuario
-   - `style.css` - Estilos CSS para la apariencia de la página
-- `README.md` – Documentación del proyecto
-- `test`– Carpeta con pruebas automatizadas
-   -`funcionesTest.php` – Pruebas unitarias para funciones principales  
-- `.gitignore`– Archivos y carpetas excluidos del control de versiones  
-- `composer.json` y `composer.lock` – Dependencias PHP (incluyendo PHPUnit)  
-- `phpUnit.xml` – Configuración de PHPUnit 
-- `.git/hooks/pre-push`– Hook que evita hacer push si fallan los tests
 
 ---
 
@@ -78,5 +67,19 @@ Para probar esta aplicación en un entorno local, sigue estos pasos:
    http://localhost/ProyectoDespliegue/frontend/index.php
 
    ```
+## ✅ Ejecutar los tests
 
+```bash
+vendor/bin/phpunit --configuration phpunit.xml
+```
+
+## 🛡️ Pre-push hook
+
+Este proyecto incorpora un hook personalizado en `.git/hooks/pre-push` que impide hacer `git push` si las pruebas unitarias fallan.
+
+Asegúrate de darle permisos de ejecución:
+
+```bash
+chmod +x .git/hooks/pre-push
+```
 
