@@ -10,11 +10,12 @@ class FuncionesTest extends TestCase
 {
     public function test_eliminaDeterminantes()
     {
+        $procesadorTexto = new ProcesadorTexto();
         //Funcion mock para testear eliminarDeterminantes
-        $texto = ProcesadorTexto::filtrarPalabras("El perro corre por el parque y la dueña ve un ¿Camión con una gata que la mira?.  árbol esta está recorrió la gata
+        $texto = $procesadorTexto->filtrarPalabras("El perro corre por el parque y la dueña ve un ¿Camión con una gata que la mira?.  árbol esta está recorrió la gata
         y la gata se quedo en la copa #"); //La cadena que entraria desde el formulario en el frontend
 
-        $resultado = ProcesadorTexto::eliminarDeterminantes($texto);
+        $resultado = $procesadorTexto->eliminarDeterminantes($texto);
 
         //Los resultados que se espera que devuelva la funcion dentro del array palabras
         $this->assertContains('perro', $resultado);
@@ -42,23 +43,27 @@ class FuncionesTest extends TestCase
 
     public function test_filtrarPalabrasTextoVacio()
     {
-        $resultado = ProcesadorTexto::filtrarPalabras("");
+        $procesadorTexto = new ProcesadorTexto();
+        $resultado = $procesadorTexto->filtrarPalabras("");
         $this->assertIsArray($resultado);
         $this->assertEmpty($resultado);
     }
 
     public function test_filtrarPalabrasSoloCaracteresEspeciales()
     {
+        $procesadorTexto = new ProcesadorTexto();
         $texto = "#$%&?¿!¡";
-        $resultado = ProcesadorTexto::filtrarPalabras($texto);
+        $resultado = $procesadorTexto->filtrarPalabras($texto);
 
         $this->assertEmpty($resultado);
     }
 
     public function test_filtrarPalabrasTildes()
     {
+        $procesadorTexto = new ProcesadorTexto();
         $texto = "camión árbol acción";
-        $resultado = ProcesadorTexto::filtrarPalabras($texto);
+
+        $resultado = $procesadorTexto->filtrarPalabras($texto);
         $this->assertContains('camión',  $resultado);
         $this->assertContains('árbol',  $resultado);
         $this->assertContains('acción', $resultado);
@@ -67,8 +72,9 @@ class FuncionesTest extends TestCase
 
     public function test_contarPalabras()
     {
+        $procesadorTexto = new ProcesadorTexto();
         $palabras = ['perro', 'gata', 'perro', 'mira'];
-        $resultado = ProcesadorTexto::contarPalabras($palabras);
+        $resultado = $procesadorTexto->contarPalabras($palabras);
 
         $this->assertEquals(2, $resultado['perro']);
         $this->assertEquals(1, $resultado['gata']);
@@ -77,7 +83,8 @@ class FuncionesTest extends TestCase
 
     public function test_contarPalabrasVacio()
     {
-        $resultado = ProcesadorTexto::contarPalabras([]);
+        $procesadorTexto = new ProcesadorTexto();
+        $resultado = $procesadorTexto->contarPalabras([]);
         $this->assertIsArray($resultado);
         $this->assertEmpty($resultado);
     }
@@ -85,13 +92,15 @@ class FuncionesTest extends TestCase
 
     public function test_ordenarPalabras()
     {
+        $procesadorTexto = new ProcesadorTexto();
+
         $palabrasContadas = [
             'mira' => 1,
             'gata' => 3,
             'perro' => 5
         ];
 
-        $ordenado = ProcesadorTexto::ordenarPalabras($palabrasContadas);
+        $ordenado = $procesadorTexto->ordenarPalabras($palabrasContadas);
 
         $esperado = [
             'perro' => 5,
@@ -104,32 +113,36 @@ class FuncionesTest extends TestCase
 
     public function test_sanearTextoPalabrasMayusculas()
     {
+         $procesadorTexto = new ProcesadorTexto();
         $texto = "PERRO gato GATO";
-        $resultado = ProcesadorTexto::sanearTexto($texto);
+        $resultado = $procesadorTexto->sanearTexto($texto);
         $this->assertStringContainsString('perro',  $resultado);
         $this->assertStringContainsString('gato', $resultado);
     }
 
     public function test_sanearTextoMinusculas()
     {
+         $procesadorTexto = new ProcesadorTexto();
         $input = "  HÓLa  ";
         $expected = "hóla";
-        $this->assertSame($expected, ProcesadorTexto::sanearTexto($input));
+        $this->assertSame($expected, $procesadorTexto->sanearTexto($input));
     }
 
     public function test_sanearTextoEncoding()
     {
+         $procesadorTexto = new ProcesadorTexto();
         $text = mb_convert_encoding("Camión", 'unicode');
 
-        $encoding = mb_detect_encoding(ProcesadorTexto::sanearTexto($text), 'UTF-8', true);
+        $encoding = mb_detect_encoding($procesadorTexto->sanearTexto($text), 'UTF-8', true);
         $this->assertEquals('UTF-8', $encoding);
     }
     public function test_main()
     {
+         $procesadorTexto = new ProcesadorTexto();
         $texto = "El perro corre por el parque y la dueña ve un ¿Camión con una gata que la mira?.  árbol esta está recorrió la gata
         y la gata se quedo en la copa #";
 
-        $resultado = ProcesadorTexto::main($texto);
+        $resultado = $procesadorTexto->main($texto);
 
         $this->assertEquals(["gata" => 3, "perro" => 1, "corre" => 1, "parque" => 1, "dueña" => 1, "ve" => 1, "camión" => 1, "mira" => 1, "árbol" => 1, "recorrió" => 1, "quedo" => 1, "copa" => 1], $resultado);
     }
@@ -155,8 +168,8 @@ class FuncionesTest extends TestCase
         // Alternativa realista: refactorizamos para usar una clase
         // y ahora hacemos el test con mock de métodos:
 
-        $mock = $this->getMockBuilder(ProcesadorTextoMock::class)
-            ->onlyMethods([ 'sanearTexto', 'filtrarPalabras', 'eliminarDeterminantes', 'contarPalabras', 'ordenarPalabras'])
+        $mock = $this->getMockBuilder(ProcesadorTexto::class)
+            ->onlyMethods(['sanearTexto', 'filtrarPalabras', 'eliminarDeterminantes', 'contarPalabras', 'ordenarPalabras'])
             ->getMock();
 
         $mock->expects($this->once())
