@@ -4,7 +4,6 @@ use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../backend/service/funciones.php';
 require_once __DIR__ . '/../backend/service/stop_words.php';
-require_once __DIR__ . '/funcionesMock.php';
 
 class FuncionesTest extends TestCase
 {
@@ -113,7 +112,7 @@ class FuncionesTest extends TestCase
 
     public function test_sanearTextoPalabrasMayusculas()
     {
-         $procesadorTexto = new ProcesadorTexto();
+        $procesadorTexto = new ProcesadorTexto();
         $texto = "PERRO gato GATO";
         $resultado = $procesadorTexto->sanearTexto($texto);
         $this->assertStringContainsString('perro',  $resultado);
@@ -122,23 +121,39 @@ class FuncionesTest extends TestCase
 
     public function test_sanearTextoMinusculas()
     {
-         $procesadorTexto = new ProcesadorTexto();
+        $procesadorTexto = new ProcesadorTexto();
         $input = "  HÓLa  ";
         $expected = "hóla";
         $this->assertSame($expected, $procesadorTexto->sanearTexto($input));
     }
 
-    public function test_sanearTextoEncoding()
+    public function test_sanearTextoEncoding_unicode()
     {
-         $procesadorTexto = new ProcesadorTexto();
+        $procesadorTexto = new ProcesadorTexto();
         $text = mb_convert_encoding("Camión", 'unicode');
+
+        $encoding = mb_detect_encoding($procesadorTexto->sanearTexto($text), 'UTF-8', true);
+        $this->assertEquals('UTF-8', $encoding);
+    }
+    public function test_sanearTextoEncoding_ISO8859()
+    {
+        $procesadorTexto = new ProcesadorTexto();
+        $text = mb_convert_encoding("Camión", "ISO-8859-1");
+
+        $encoding = mb_detect_encoding($procesadorTexto->sanearTexto($text), 'UTF-8', true);
+        $this->assertEquals('UTF-8', $encoding);
+    }
+    public function test_sanearTextoEncoding_ASCII()
+    {
+        $procesadorTexto = new ProcesadorTexto();
+        $text = mb_convert_encoding("Camión", 'ASCII');
 
         $encoding = mb_detect_encoding($procesadorTexto->sanearTexto($text), 'UTF-8', true);
         $this->assertEquals('UTF-8', $encoding);
     }
     public function test_main()
     {
-         $procesadorTexto = new ProcesadorTexto();
+        $procesadorTexto = new ProcesadorTexto();
         $texto = "El perro corre por el parque y la dueña ve un ¿Camión con una gata que la mira?.  árbol esta está recorrió la gata
         y la gata se quedo en la copa #";
 
@@ -171,7 +186,7 @@ class FuncionesTest extends TestCase
         $mock = $this->getMockBuilder(ProcesadorTexto::class)
             ->onlyMethods(['sanearTexto', 'filtrarPalabras', 'eliminarDeterminantes', 'contarPalabras', 'ordenarPalabras'])
             ->getMock();
-
+     
         $mock->expects($this->once())
             ->method('sanearTexto')
             ->with($texto)

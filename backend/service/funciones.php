@@ -7,10 +7,10 @@ class ProcesadorTexto
 
     function main($texto): array
     {
-        $textoSaneado = ProcesadorTexto::sanearTexto($texto);
-        $listaPalabras = ProcesadorTexto::eliminarDeterminantes(ProcesadorTexto::filtrarPalabras($textoSaneado));
-        $palabrasContadas = ProcesadorTexto::contarPalabras($listaPalabras);
-        $palabrasOrdenadas = ProcesadorTexto::ordenarPalabras($palabrasContadas);
+        $textoSaneado = $this->sanearTexto($texto);
+        $listaPalabras = $this->eliminarDeterminantes($this->filtrarPalabras($textoSaneado));
+        $palabrasContadas = $this->contarPalabras($listaPalabras);
+        $palabrasOrdenadas = $this->ordenarPalabras($palabrasContadas);
 
         return $palabrasOrdenadas;
     }
