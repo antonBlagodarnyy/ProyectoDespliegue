@@ -64,13 +64,13 @@ Para probar esta aplicación en un entorno local, sigue estos pasos:
 
 4. **Accede a la aplicación desde tu navegador**:
    ```
-   http://localhost/ProyectoDespliegue/frontend/index.php
+   http://localhost/ProyectoDespliegue/index.php
 
    ```
 ## ✅ Ejecutar los tests
 
 ```bash
-vendor/bin/phpunit --configuration phpunit.xml
+vendor/bin/phpunit --coverage text
 ```
 
 ## 🛡️ Pre-push hook
