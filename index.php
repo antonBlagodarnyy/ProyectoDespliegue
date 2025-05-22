@@ -6,14 +6,14 @@ require_once(__DIR__ . '/backend/service/funciones.php');
 $palabras = [];
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (!empty($_POST['palabras']) && preg_match('/^[^\s]+(\s+[^\s]+)*$/',$_POST['palabras'])) {
-       // $palabras = ordenarPalabras(contarPalabras(recogerTexto($_POST['palabras'])));
-       $palabras=ProcesadorTexto::main($_POST['palabras']);
+    if (!empty($_POST['palabras']) && preg_match('/^[^\s]+(\s+[^\s]+)*$/', $_POST['palabras'])) {
+        $procesadorTexto = new ProcesadorTexto();
+        $palabras = $procesadorTexto->main($_POST['palabras']);
     }
 }
-    //'/^\p{L}+( \p{L}+)*$/u', regex antigua: /^[^\s]+(\s+[^\s]+)*$/
-    ?>
-    
+//'/^\p{L}+( \p{L}+)*$/u', regex antigua: /^[^\s]+(\s+[^\s]+)*$/
+?>
+
 
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de despliegue</title>
-<link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
