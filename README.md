@@ -69,9 +69,29 @@ Para probar esta aplicación en un entorno local, sigue estos pasos:
    ```
 ## ✅ Ejecutar los tests
 
+Para lanzar las pruebas unitarias y obtener además un informe de **cobertura de código**, ejecuta:
+
 ```bash
-vendor/bin/phpunit --coverage text
+vendor/bin/phpunit --coverage-text
 ```
+Esto mostrará en consola qué porcentaje del código ha sido cubierto por los tests.
+
+### 🧩 Requisitos para ver la cobertura
+
+Es necesario tener instalado **Xdebug** y correctamente configurado en tu entorno PHP. Asegúrate de tener las siguientes líneas en el archivo `php.ini` dentro del bloque correspondiente a Xdebug:
+
+```ini
+zend_extension = xdebug
+xdebug.mode = coverage
+```
+
+> 🔍 Si estás usando XAMPP, este archivo suele encontrarse en:
+> - Windows: `C:\xampp\php\php.ini`
+> - Linux/macOS: `/opt/lampp/etc/php.ini`
+
+Tras modificar el archivo, reinicia Apache para que los cambios surtan efecto.
+
+---
 
 ## 🛡️ Pre-push hook
 
