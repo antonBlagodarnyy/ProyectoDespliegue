@@ -110,6 +110,16 @@ class FuncionesTest extends TestCase
         $this->assertEquals($esperado, $ordenado);
     }
 
+    public function test_ordenarPalabras_arrayDeNumeros()
+    {
+        $procesadorTexto = new ProcesadorTexto();
+        $palabras = [123];
+
+        $resultado =  $procesadorTexto->ordenarPalabras($palabras);
+
+        $this->assertEquals([123], $resultado);
+    }
+
     public function test_sanearTextoPalabrasMayusculas()
     {
         $procesadorTexto = new ProcesadorTexto();
@@ -161,6 +171,13 @@ class FuncionesTest extends TestCase
 
         $this->assertEquals(["gata" => 3, "perro" => 1, "corre" => 1, "parque" => 1, "dueña" => 1, "ve" => 1, "camión" => 1, "mira" => 1, "árbol" => 1, "recorrió" => 1, "quedo" => 1, "copa" => 1], $resultado);
     }
+    public function test_main_array()
+    {
+        $procesadorTexto = new ProcesadorTexto();
+        $array = [];
+        $this->expectException(TypeError::class);
+        $procesadorTexto->main($array);
+    }
     public function test_main_with_mocked_functions()
     {
         // Preparamos el texto de entrada
@@ -186,7 +203,7 @@ class FuncionesTest extends TestCase
         $mock = $this->getMockBuilder(ProcesadorTexto::class)
             ->onlyMethods(['sanearTexto', 'filtrarPalabras', 'eliminarDeterminantes', 'contarPalabras', 'ordenarPalabras'])
             ->getMock();
-     
+
         $mock->expects($this->once())
             ->method('sanearTexto')
             ->with($texto)
