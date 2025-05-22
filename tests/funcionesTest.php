@@ -88,7 +88,8 @@ class FuncionesTest extends TestCase
         $this->assertEmpty($resultado);
     }
 
- public function test_contarPalabrasSimuladoConValoresNegativos()
+
+public function test_contarPalabrasSimuladoConValoresNegativos()
 {
     //Este test simula un caso en el que alguien manipule el array de contar palabras de alguna manera y 
     // meta datos negativos
@@ -101,13 +102,21 @@ class FuncionesTest extends TestCase
     $this->expectException(\RuntimeException::class);
     $this->expectExceptionMessage("La palabra 'gato' no se puede repetir con un numero por debajo de 0");
 
+    
     foreach ($conteoFalso as $palabra => $veces) {
         if ($veces < 1) {//Si el numero de veces de la palabra no se repite al menos 1 vez
             throw new \RuntimeException("La palabra '$palabra' no se puede repetir con un numero por debajo de 0");
             //Lanzo una excepcion avisando al usuario
         }
     }
+
+    //A partir esto de aqui solo se ejecutaría si no se lanza excepción (pero como en este test hay un valor 
+    // negativo, el programa no llegaria nunca a esta parte del codigo)
+    $resultado = ProcesadorTexto::ordenarPalabras($conteoFalso);
+
+    $this->assertIsArray($resultado);
 }
+
 
     public function test_ordenarPalabras()
     {
