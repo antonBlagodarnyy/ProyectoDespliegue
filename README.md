@@ -70,7 +70,7 @@ Para probar esta aplicación en un entorno local, sigue estos pasos:
 ## ✅ Ejecutar los tests
 
 ```bash
-vendor/bin/phpunit --coverage text
+vendor/bin/phpunit --coverage-text
 ```
 
 ## 🛡️ Pre-push hook
